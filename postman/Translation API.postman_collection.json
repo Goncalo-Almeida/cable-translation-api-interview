@@ -1,0 +1,107 @@
+{
+	"info": {
+		"_postman_id": "3c179419-2ab4-478a-99a8-38f5098fa65b",
+		"name": "Cable Translation API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "707806"
+	},
+	"item": [
+		{
+			"name": "Translation",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-Trace-Id",
+						"value": "someUUIDv4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{TranslationAPI_BASE_URL}}/api/translation?word=Hi&wordLanguage=EN&translateToLanguage=PT",
+					"host": [
+						"{{TranslationAPI_BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"translation"
+					],
+					"query": [
+						{
+							"key": "word",
+							"value": "Hi"
+						},
+						{
+							"key": "wordLanguage",
+							"value": "EN"
+						},
+						{
+							"key": "translateToLanguage",
+							"value": "PT"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New translation",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "X-Trace-Id",
+						"value": "someUUIDv4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"originalWord\": \"Oiii\",\n    \"originalWordLanguage\": \"PT\",\n    \"translatedWord\": \"Hi\",\n    \"translatedWordLanguage\": \"EN\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{TranslationAPI_BASE_URL}}/api/translation",
+					"host": [
+						"{{TranslationAPI_BASE_URL}}"
+					],
+					"path": [
+						"api",
+						"translation"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "TranslationAPI_BASE_URL",
+			"value": "http://localhost:8080/cable"
+		}
+	]
+}
