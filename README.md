@@ -12,7 +12,7 @@ The service will then return the translated text to the client.
 ### Running the project
 1. Start a postgres DB with:
     ```
-    docker run --name postgres_db -e POSTGRES_PASSWORD=password -p 57246:5432 -d postgres
+    docker run --name postgres_db -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
     ```
 2. Start the project with `mvn spring-boot:run` or `./mvnw spring-boot:run`. The project should start on port 8080.
 3. Import the postman collection `Translation API.postman_collection.json` to postman and start testing the API.
@@ -28,6 +28,8 @@ The service will then return the translated text to the client.
 and through the different microservices in a distributed system
 - Good dependency management avoiding adding unnecessary dependencies and delegating most of the dependency management to Spring Boot BOMs
 - OpenAPI documentation using Swagger
+- Dockerfile to build a docker image of the application
+- docker-compose file to start the application and the DB with a single command
 
 ### What this project has not
 - It can't translate sentences or long texts
@@ -35,7 +37,6 @@ and through the different microservices in a distributed system
 - No integration tests, although it has a test class ready with Testcontainers to test from endpoint to DB
 - No concurrency considerations other than the ones provided by the DB and the `@Transactional` annotation
 - No transaction isolation and propagation considerations, using default values.
-- The project is not dockerised and can't run locally with `docker-compose up`
 - Monitoring
 - CI/CD pipeline
 - Authentication and authorisation
